@@ -1,6 +1,6 @@
 const api = {
 	key: "c05165900889e0c017b2ee9ad3a1a515",
-	baseurl: "https://home.openweathermap.org/data/2.5/"
+	baseurl: "https://api.openweathermap.org/data/2.5/weather?q=vancouver&appid=c05165900889e0c017b2ee9ad3a1a515"
 }
 
 const searchbox = document.querySelector('.search-box');
