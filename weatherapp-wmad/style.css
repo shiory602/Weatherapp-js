@@ -87,13 +87,32 @@ main {
 	text-shadow: 0 3px rgba(0,0,0,0.4);
 }
 
-.current .weather {
+.todays-weather {
+	color: #fff;
+	font-size: 32px;
+	font-weight: 700;
+	font-style: italic;
+	margin-bottom: 15px;
+	text-shadow: 0px 3px rgba(0, 0, 0, 0.4);
+	
+}
+
+.current .wd {
 	color: #fff;
 	font-size: 28px;
 	font-weight: 500;
 	text-shadow: 0 3px rgba(0,0,0,0.4);
 }
 
+.hi-low {
+	color: #fff;
+	font-size: 24px;
+	font-weight: 500;
+	text-shadow: 0px 4px rgba(0, 0, 0, 0.4);
+}
+
+
+/* 
 .bottom-section {
 	filter: grayscale(30%);
 	background-color: rgba(0,0,0,0.4);
@@ -106,4 +125,4 @@ main {
 }
 
 .bottom-section .weekly {
-}
+} */
