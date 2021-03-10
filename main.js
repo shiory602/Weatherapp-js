@@ -3,7 +3,6 @@ const api = {
 	baseurl: "https://api.openweathermap.org/data/2.5/",
 }
 
-
 function dateBuilder(d) {
 	let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 	let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -22,11 +21,10 @@ const getResults = () => {
 	.then(response => { // response = weather data
 		if (response.status !== 200) {
 			if(response.status === 404) {
-				alert("City is not found, please try again");
+				alert("City is not found, please try again.");
 			} else {
 				console.log(`Oops! we have an error ${response.status}`);
 			}
-			
 			return;
 		}
 		return response.json()
@@ -78,7 +76,11 @@ input.addEventListener('search', () => {
 		}
 })
 
+
 $( document ).ready(() => {
 	getResults();
+	setTimeout(function () {
+	location.reload(); // reload every 2 mins
+}, 120000);
 })
 
