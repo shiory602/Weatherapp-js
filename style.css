@@ -6,7 +6,7 @@
 
 body {
 	font-family: 'montserrat', sans-serif;
-	background-image: url("sunnybg.jpg");
+	background-image: url("/source/sunnybg.jpg");
 	background-size: cover;
 	background-position: top center;
 	
