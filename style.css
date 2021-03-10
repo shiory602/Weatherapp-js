@@ -6,7 +6,7 @@
 
 body {
 	font-family: 'montserrat', sans-serif;
-	background-image: url("https://github.com/shiory602/Weatherapp-js/blob/master/source/sunnybg.jpg?raw=true");
+	background-image: url("/img/sunnybg.jpg");
 	background-size: cover;
 	background-position: top center;
 	
