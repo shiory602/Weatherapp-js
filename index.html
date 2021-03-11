@@ -1,37 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Weather App</title>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
+
 <body>
 	<div class="app-wrap">
 		<header>
-			<input type="search" autocomplete="off" class="search-box" id="searchBox" placeholder="Search for a city...">
+			<input type="search" autocomplete="off" class="search-box fadein" id="searchBox" placeholder="Search for a city...">
 		</header>
 		<main>
-			<section class="current">
+			<section class="current fadein">
 				<div class="temp"></div>
 				<div class="date"></div>
 				<div class="todays-weather" id="todays-weather"></div>
 				<div id="weatherIcon"></div>
-				<!-- <div class="wd weather1"></div>
+				<div class="wd weather1"></div>
 				<div class="wd weather2">12:00<span>Cloudy</span></div>
-				<div class="wd weather3">21:00<span>Sunny</span></div> -->
+				<div class="wd weather3">21:00<span>Sunny</span></div>
 			</section>
-			<section class="location">
+			<section class="location fadein">
 				<div class="city"></div>
 				<div class="country"></div>
 			</section>
 		</main>
 		<div class="bottom-section">
 			<!-- <div class="weekly"> -->
-				<!-- <div class="today">
+			<!-- <div class="today">
 					<div class="icon">icon</div>
 					<p>TODAY</p>
 					<div class="high-low">10℃/3℃</div>
@@ -56,4 +60,5 @@
 
 	<script src="main.js"></script>
 </body>
+
 </html>
