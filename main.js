@@ -7,10 +7,13 @@ let temp = document.querySelector(".current .temp");
 let date = document.querySelector(".current .date");
 let todaysWeather = document.getElementById("todays-weather");
 let weatherIcon = document.getElementById("weatherIcon");
+let weather1 = document.getElementById("weather1");
+let weather2 = document.getElementById("weather2");
+let weather3 = document.getElementById("weather3");
 let city = document.querySelector(".location .city");
 let country = document.querySelector(".location .country");
-let searchBox = document.getElementById("searchBox");
-const input = document.querySelector('input[type="search"]');
+
+// const input = document.querySelector('input[type="search"]');
 
 
 function dateBuilder(d) {
@@ -59,8 +62,8 @@ function fillData(query) {
 }
 
 
-const getResults = () => {
-	fetch(`${api.baseurl}weather?q=${searchBox}&units=metric&appid=${api.key}`) // return promise // units=metric&-->change k to c tem
+const getResults = (city) => {
+	fetch(`${api.baseurl}weather?q=${city}&units=metric&appid=${api.key}`) // return promise // units=metric&-->change k to c tem
 		.then(response => { // response = weather data
 			if (response.status !== 200) {
 				if (response.status === 404) {
@@ -81,21 +84,33 @@ const getResults = () => {
 		})
 }
 
-
+// API references: https://openweathermap.org/api/one-call-api
 const hourlyResults = (query) => {
-fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${query.coord.lat}&lon=${query.coord.lon}&exclude=hourly&appid=${api.key}`)
-	.then(response => { // response = weather data
-		if (response.status !== 200) {
+	fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${query.coord.lat}&lon=${query.coord.lon}&exclude=current,daily,minutely,alert&appid=${api.key}`)
+		.then(response => { // response = weather data
+			if (response.status !== 200) {
 				console.log(`Oops! we have an error ${response.status}`);
 			}
 			return response.json()
 		})
-	.then((query) => {
-		console.log(query);
-	})
-	.catch(error => {
-		console.log(`We have an error ${error}`);
-	})
+		.then((query) => {
+			console.log(query);
+			// for (let i = 4; i < query.hourly; i++)
+			var sec = query.hourly[7].dt;
+			var date = new Date(sec * 1000);
+			var timestr = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+			console.log(date, timestr);
+
+			$(".weather1").html(`${timestr}<span>${query.hourly[7].weather[0].main}</span>`);
+			$(".weather2").html(timestr);
+
+			// weather1.innerHTML = `<span>${query.}</span>`
+
+		})
+		.catch(error => {
+			console.log(`We have an error ${error}`);
+		})
 }
 
 
@@ -107,22 +122,28 @@ fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${query.coord.lat}&lo
 // let weather3 = document.querySelector(".current .weather3");
 
 
-input.addEventListener('search', () => {
-	searchBox.value = " " // clear the input
-	searchBox = input.value;
-	if (searchBox) {
-		getResults();
-		hourlyResults();
+let reloadDisplay = () => {
+	setTimeout(function () {
+		location.reload(); // reload every 2 mins
+	}, 120000);
+}
+
+let searchBox = document.getElementById("searchBox");
+let form = document.getElementById("form-id");
+form.addEventListener('submit', (e) => {
+	e.preventDefault(); //フォーム送信を停止
+	if (searchBox.value) {
+		let cityName = searchBox.value;
+		// .appendChild(cityName);
+		getResults(cityName);
+		// hourlyResults(e.value);
+		searchBox.value = "Search for a city..." // clear the input
 	} else {
-		alert("it is empty")
+		alert("it is empty");
 	}
 })
 
 $(document).ready(() => {
-	searchBox = "vancouver";
-	getResults();
+	getResults("vancouver");
 	// hourlyResults();
-	setTimeout(function () {
-		location.reload(); // reload every 2 mins
-	}, 120000);
 })
