@@ -1,3 +1,8 @@
+// var dayjs = require('dayjs');
+// dayjs().format();
+// dayjs.extend(utc)
+// dayjs.extend(timezone)
+
 const api = {
 	key: "c05165900889e0c017b2ee9ad3a1a515",
 	baseurl: "https://api.openweathermap.org/data/2.5/",
@@ -69,8 +74,33 @@ function changeBg(todaysWeather) {
 		case "09d":
 			document.body.style.backgroundImage = "url('./img/mist.jpg')";
 			break;
+			// night
+		case "01n":
+			document.body.style.backgroundImage = "url('./img/clearn.jpg')";
+			break;
+		case "02n":
+			document.body.style.backgroundImage = "url('./img/cloudn.jpg')";
+			break;
+		case "03n":
+			document.body.style.backgroundImage = "url('./img/cloudn.jpg')";
+			break;
+		case "04n":
+			document.body.style.backgroundImage = "url('./img/cloudn.jpg')";
+			break;
+		case "10n":
+			document.body.style.backgroundImage = "url('./img/rainyn.jpg')";
+			break;
+		case "50n":
+			document.body.style.backgroundImage = "url('./img/rainyn.jpg')";
+			break;
+		case "13n":
+			document.body.style.backgroundImage = "url('./img/snown.jpg')";
+			break;
+		case "09n":
+			document.body.style.backgroundImage = "url('./img/mistn.jpg')";
+			break;
 		default:
-			document.body.style.backgroundImage = "url('./img/sunnybg.jpg')";
+			document.body.style.backgroundImage = "url('./img/sunny')";
 			break;
 	}
 }
@@ -144,12 +174,22 @@ const hourlyResults = (query) => {
 
 			console.log(query);
 
+				// 日付
+	var sec = query.hourly[0].dt; // get second
+	var date = new Date(sec * 1000);
+	var datestr = date.toLocaleDateString()
+	var timestr = date.toLocaleTimeString([], {
+		hour: '2-digit',
+		minute: '2-digit'
+	})
+	$(".date").html(`${datestr} ${timestr}`);
+
 			// weekly -----------------------------------
 
 			console.log(query.daily[0].dt);
 
 			// 曜日
-			let now = new Date();
+			let now = new Date(query.daily[0].dt * 1000);
 			day1.innerText = dateBuilder(now);
 
 			// アイコン
