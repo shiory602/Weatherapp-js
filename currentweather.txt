@@ -1,4 +1,4 @@
-{
+mainFetch = {
 	"coord": {
 		"lon": -123.1193,
 		"lat": 49.2497
@@ -41,6 +41,29 @@
 }
 
 https://api.openweathermap.org/data/2.5/onecall?lat=49.2497&lon=-123.1193&exclude=hourly&appid=c05165900889e0c017b2ee9ad3a1a515
+
+daily = { // Array(8)
+0:
+clouds: 56
+dew_point: 274.35
+dt: 1615579200
+feels_like: {day: 278.87, night: 275.73, eve: 279.04, morn: 273.67}
+humidity: 58
+pop: 0
+pressure: 1026
+sunrise: 1615559491
+sunset: 1615601572
+temp: {day: 282.23, min: 277.1, max: 283.82, night: 278.97, eve: 281.03, …}
+uvi: 2.84
+weather: [
+	{id: 804, main: "Clouds", description: "overcast clouds", icon: "04d"}
+]
+wind_deg: 162
+wind_speed: 2.23
+__proto__: Object
+1: {dt: 1615665600, sunrise: 1615645764, sunset: 1615688065, temp: {…}, feels_like: {…}, …}
+}
+
 
 hourly = {
   "lat": 49.2497,
