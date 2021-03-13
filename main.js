@@ -20,9 +20,25 @@ let city = document.querySelector(".location .city");
 let country = document.querySelector(".location .country");
 let high = document.querySelector(".high");
 let low = document.querySelector(".low");
+
 let day1 = document.querySelector(".week-day .day1");
 let weekWeatherIcon1 = document.querySelector("#weekly-icon1");
 let dayWeather1 = document.querySelector(".week-day .day-weather1");
+let day2 = document.querySelector(".week-day .day2");
+let weekWeatherIcon2 = document.querySelector("#weekly-icon2");
+let dayWeather2 = document.querySelector(".week-day .day-weather2");
+let day3 = document.querySelector(".week-day .day3");
+let weekWeatherIcon3 = document.querySelector("#weekly-icon3");
+let dayWeather3 = document.querySelector(".week-day .day-weather3");
+let day4 = document.querySelector(".week-day .day4");
+let weekWeatherIcon4 = document.querySelector("#weekly-icon4");
+let dayWeather4 = document.querySelector(".week-day .day-weather4");
+let day5 = document.querySelector(".week-day .day5");
+let weekWeatherIcon5 = document.querySelector("#weekly-icon5");
+let dayWeather5 = document.querySelector(".week-day .day-weather5");
+let day6 = document.querySelector(".week-day .day6");
+let weekWeatherIcon6 = document.querySelector("#weekly-icon6");
+let dayWeather6 = document.querySelector(".week-day .day-weather6");
 
 
 // // 曜日を表す文字列の配列を作っておく
@@ -38,7 +54,7 @@ function dateBuilder(d) {
 	// let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 	let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-	let day = days[d.getDay() + 1]; // array[index]
+	let day = days[d.getDay()]; // array[index]
 	// let date = d.getDate();
 	// let month = months[d.getMonth()];
 	// let year = d.getFullYear();
@@ -163,7 +179,7 @@ const getResults = (city) => {
 
 // API references: https://openweathermap.org/api/one-call-api
 const hourlyResults = (query) => {
-	fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${query.coord.lat}&lon=${query.coord.lon}&date=${query.dt}&exclude=current,minutely,alert&units=metric&appid=${api.key}`)
+	fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${query.coord.lat}&lon=${query.coord.lon}&date=${query.dt}&exclude=current,alert&units=metric&appid=${api.key}`)
 		.then(response => { // response = weather data
 			if (response.status !== 200) {
 				console.log(`Oops! we have an error ${response.status}`);
@@ -175,7 +191,7 @@ const hourlyResults = (query) => {
 			console.log(query);
 
 				// 日付
-	var sec = query.hourly[0].dt; // get second
+	var sec = query.minutely[0].dt; // get second
 	var date = new Date(sec * 1000);
 	var datestr = date.toLocaleDateString()
 	var timestr = date.toLocaleTimeString([], {
@@ -185,20 +201,65 @@ const hourlyResults = (query) => {
 	$(".date").html(`${datestr} ${timestr}`);
 
 			// weekly -----------------------------------
-
-			console.log(query.daily[0].dt);
-
+			
 			// 曜日
-			let now = new Date(query.daily[0].dt * 1000);
+			let now = new Date(query.daily[1].dt * 1000);
 			day1.innerText = dateBuilder(now);
-
 			// アイコン
-			let icon = `http://openweathermap.org/img/w/${query.daily[1].weather[0].icon}.png`;
-			weekWeatherIcon1.innerHTML = `<img src=${icon} width="50">`;
-
+			let icon1 = `http://openweathermap.org/img/w/${query.daily[1].weather[0].icon}.png`;
+			weekWeatherIcon1.innerHTML = `<img src=${icon1} width="80">`;
 			// 気温
 			dayWeather1.innerHTML = `${Math.round(query.daily[1].temp.day)}<span>℃</span>`;
+			
 
+			// 曜日
+			let now2 = new Date(query.daily[2].dt * 1000);
+			day2.innerText = dateBuilder(now2);
+			// アイコン
+			let icon2 = `http://openweathermap.org/img/w/${query.daily[2].weather[0].icon}.png`;
+			weekWeatherIcon2.innerHTML = `<img src=${icon2} width="80">`;
+			// 気温
+			dayWeather2.innerHTML = `${Math.round(query.daily[2].temp.day)}<span>℃</span>`;
+			
+
+			// 曜日
+			let now3 = new Date(query.daily[3].dt * 1000);
+			day3.innerText = dateBuilder(now3);
+			// アイコン
+			let icon3 = `http://openweathermap.org/img/w/${query.daily[3].weather[0].icon}.png`;
+			weekWeatherIcon3.innerHTML = `<img src=${icon3} width="80">`;
+			// 気温
+			dayWeather3.innerHTML = `${Math.round(query.daily[3].temp.day)}<span>℃</span>`;
+
+
+			// 曜日
+			let now4 = new Date(query.daily[4].dt * 1000);
+			day4.innerText = dateBuilder(now4);
+			// アイコン
+			let icon4 = `http://openweathermap.org/img/w/${query.daily[4].weather[0].icon}.png`;
+			weekWeatherIcon4.innerHTML = `<img src=${icon4} width="80">`;
+			// 気温
+			dayWeather4.innerHTML = `${Math.round(query.daily[4].temp.day)}<span>℃</span>`;
+
+
+			// 曜日
+			let now5 = new Date(query.daily[5].dt * 1000);
+			day5.innerText = dateBuilder(now5);
+			// アイコン
+			let icon5 = `http://openweathermap.org/img/w/${query.daily[5].weather[0].icon}.png`;
+			weekWeatherIcon5.innerHTML = `<img src=${icon5} width="80">`;
+			// 気温
+			dayWeather5.innerHTML = `${Math.round(query.daily[5].temp.day)}<span>℃</span>`;
+
+
+			// 曜日
+			let now6 = new Date(query.daily[6].dt * 1000);
+			day6.innerText = dateBuilder(now6);
+			// アイコン
+			let icon6 = `http://openweathermap.org/img/w/${query.daily[6].weather[0].icon}.png`;
+			weekWeatherIcon6.innerHTML = `<img src=${icon6} width="80">`;
+			// 気温
+			dayWeather6.innerHTML = `${Math.round(query.daily[6].temp.day)}<span>℃</span>`;
 
 
 
