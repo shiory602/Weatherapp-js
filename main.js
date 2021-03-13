@@ -128,17 +128,6 @@ function fillData(query) {
 	// 気温
 	temp.innerHTML = `${Math.round(query.main.temp)}<span>℃</span>`; //四捨五入
 
-	// 日付
-	var sec = query.dt; // get second
-	var date = new Date(sec * 1000);
-	var datestr = date.toLocaleDateString()
-	var timestr = date.toLocaleTimeString([], {
-		hour: '2-digit',
-		minute: '2-digit'
-	})
-	$(".date").html(`${datestr} ${timestr}`);
-
-
 	// 天気
 	todaysWeather.innerHTML = query.weather[0].main;
 
@@ -188,20 +177,24 @@ const hourlyResults = (query) => {
 		})
 		.then((query) => {
 
-			console.log(query);
-
-				// 日付
-	var sec = query.minutely[0].dt; // get second
-	var date = new Date(sec * 1000);
-	var datestr = date.toLocaleDateString()
-	var timestr = date.toLocaleTimeString([], {
-		hour: '2-digit',
-		minute: '2-digit'
-	})
-	$(".date").html(`${datestr} ${timestr}`);
+			// 日付
+			var date = new Date();
+			var datestr = date.toLocaleDateString('en-US', {
+				year: 'numeric',
+				month: 'long',
+				day: '2-digit',
+				weekday: "long",
+				timeZone: query.timezone,
+			})
+			var timestr = date.toLocaleString("en-US", {
+				timeZone: query.timezone,
+				timeStyle: "short",
+				hourCycle: "h24",
+			})
+			$(".date").html(`${datestr} ${timestr}`);
 
 			// weekly -----------------------------------
-			
+
 			// 曜日
 			let now = new Date(query.daily[1].dt * 1000);
 			day1.innerText = dateBuilder(now);
@@ -210,7 +203,7 @@ const hourlyResults = (query) => {
 			weekWeatherIcon1.innerHTML = `<img src=${icon1} width="80">`;
 			// 気温
 			dayWeather1.innerHTML = `${Math.round(query.daily[1].temp.day)}<span>℃</span>`;
-			
+
 
 			// 曜日
 			let now2 = new Date(query.daily[2].dt * 1000);
@@ -220,7 +213,7 @@ const hourlyResults = (query) => {
 			weekWeatherIcon2.innerHTML = `<img src=${icon2} width="80">`;
 			// 気温
 			dayWeather2.innerHTML = `${Math.round(query.daily[2].temp.day)}<span>℃</span>`;
-			
+
 
 			// 曜日
 			let now3 = new Date(query.daily[3].dt * 1000);
