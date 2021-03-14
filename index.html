@@ -6,23 +6,26 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Weather App</title>
+	<!-- CSS ------------------------------------->
 	<link rel="stylesheet" href="style.css">
+	<!-- jquery ---------------------------------->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
 </head>
 
 <body>
 	<div class="app-wrap">
+		<!-- search box ----------------------------->
 		<header>
 			<form id="form-id">
 				<input type="search" autocomplete="off" class="search-box" id="searchBox" placeholder="Search for a city...">
 			</form>
 		</header>
+		<!-- today's data -->
 		<main>
 			<section class="current">
-				<div class="date"></div>
-				<div class="temp"></div>
-				<div class="wd weather1"></div>
+				<div class="date"></div> <!-- date -->
+				<div class="temp"></div> <!-- temp -->
+				<div class="wd weather1"></div> <!-- every 8h -->
 				<div class="wd weather2"></div>
 				<div class="wd weather3"></div>
 			</section>
@@ -42,34 +45,35 @@
 						<span class="low"></span>℃</div>
 				</div>
 			</div>
+			<!-- weekly data -->
 			<div class="weekly">
 				<div class="week-day">
-					<div class="day1"></div>
+					<div class="day1"></div> <!-- weekly date -->
 					<div id="weekly-icon1"></div>
-					<div class="day-weather1"></div>
+					<div class="day-weather1"></div> <!-- tem -->
 				</div>
 				<div class="week-day">
-					<div class="day2">Wed</div>
+					<div class="day2"></div>
 					<div id="weekly-icon2"></div>
 					<div class="day-weather2"></div>
 				</div>
 				<div class="week-day">
-					<div class="day3">Thu</div>
+					<div class="day3"></div>
 					<div id="weekly-icon3"></div>
 					<div class="day-weather3"></div>
 				</div>
 				<div class="week-day">
-					<div class="day4">Fri</div>
+					<div class="day4"></div>
 					<div id="weekly-icon4"></div>
 					<div class="day-weather4"></div>
 				</div>
 				<div class="week-day">
-					<div class="day5">Sat</div>
+					<div class="day5"></div>
 					<div id="weekly-icon5"></div>
 					<div class="day-weather5"></div>
 				</div>
 				<div class="week-day">
-					<div class="day6">Sun</div>
+					<div class="day6"></div>
 					<div id="weekly-icon6"></div>
 					<div class="day-weather6"></div>
 				</div>

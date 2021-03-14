@@ -298,10 +298,14 @@ let reloadDisplay = (v) => {
 		}, 120000);
 	} else {
 		setTimeout(function () {
-			location.reload(); // reload every 2 mins
-		}, 120000);
+			 // reload every 2 mins
+			getResults(v);
+			reloadDisplay(v);
+		}, 10000);
 	}
 }
+
+
 
 let searchBox = document.getElementById("searchBox");
 let form = document.getElementById("form-id");
@@ -309,9 +313,7 @@ form.addEventListener('submit', (e) => {
 	e.preventDefault(); //フォーム送信を停止
 	if (searchBox.value) {
 		let cityName = searchBox.value;
-		// .appendChild(cityName);
 		getResults(cityName);
-		// hourlyResults(e.value);
 		reloadDisplay(cityName);
 		searchBox.value = "" // clear the input
 	} else {
@@ -321,6 +323,5 @@ form.addEventListener('submit', (e) => {
 
 $(document).ready(() => {
 	getResults("vancouver");
-	// hourlyResults();
 	reloadDisplay("vancouver");
 })
