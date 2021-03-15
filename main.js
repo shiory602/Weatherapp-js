@@ -283,18 +283,12 @@ const hourlyResults = (query) => {
 
 
 // update data every 2 mins
+let setC;
 let reloadDisplay = (v) => {
-	if (v == "vancouver") {
-		setTimeout(function () {
-			location.reload(); // reload every 2 mins
-		}, 120000);
-	} else {
-		setTimeout(function () {
-			// reload every 2 mins
+		setC = setTimeout(function () {
 			getResults(v);
 			reloadDisplay(v);
-		}, 120000);
-	}
+		}, 10000);
 }
 
 
@@ -304,6 +298,7 @@ let form = document.getElementById("form-id");
 form.addEventListener('submit', (e) => {
 	e.preventDefault(); // stop form submitting
 	if (searchBox.value) {
+		clearTimeout(setC);
 		let cityName = searchBox.value;
 		getResults(cityName);
 		reloadDisplay(cityName);
