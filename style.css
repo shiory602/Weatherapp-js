@@ -11,6 +11,15 @@
 	box-sizing: border-box;
 }
 
+@media screen and (max-width : 480px){
+	html,
+	body {
+		overflow-x: hidden;
+		overflow-y: scroll;
+		-webkit-overflow-scrolling: touch;
+	}
+}
+
 body {
 	font-family: 'Varela Round', sans-serif;
 	background-size: cover;
@@ -30,6 +39,11 @@ header {
 	align-items: flex-start;
 	padding: 40px 50px 0px;
 }
+	@media screen and (max-width: 480px) {
+		header {
+			justify-content: center;
+		}
+	}
 
 header input {
 	width: 100%;
@@ -59,6 +73,11 @@ main {
 	align-items: center;
 	text-align: center;
 }
+@media screen and (max-width : 480px) {
+	main {
+		display: block;
+	}
+}
 
 .location .city {
 	color: var(--main-color);
@@ -84,6 +103,11 @@ main {
 	text-shadow: 2px 10px rgba(0, 0, 0, 0.6);
 	text-align: left;
 }
+@media screen and (max-width: 480px) {
+	.current .temp {
+		text-align: center;
+	}
+}
 
 .current > .date {
 	color: var(--main-color);
@@ -92,6 +116,11 @@ main {
 	font-style: italic;
 	margin-bottom: 20px;
 	text-shadow: 0 3px rgba(0, 0, 0, 0.6);
+}
+@media screen and (max-width : 480px) {
+	.current > .date {
+    font-size: 28px;
+    margin-top: 20px;
 }
 
 
@@ -140,6 +169,14 @@ main {
 	font-size: 20px;
 	text-shadow: 0px 3px rgba(0, 0, 0, 0.4);
 }
+@media screen and (max-width : 480px) {
+	.bottom-section {
+		height: 0;
+		display: block;
+		margin-top: 10px;
+		text-align: center;
+	}
+}
 
 .bottom-section  > .today {
 	width: 20%;
@@ -149,6 +186,16 @@ main {
 	align-items: center;
 	text-align: center;
 	border-right: 1px solid var(--sub-color);
+}
+@media screen and (max-width : 480px) {
+	.bottom-section > .today {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		height: 200px;
+		border-bottom: 1px solid var(--sub-color);
+		margin-bottom: 30px;
+	}
 }
 
 .today > .tem > p {
@@ -173,6 +220,12 @@ main {
 	flex-direction: row;
 	justify-content: space-around;
 }
+@media screen and (max-width : 480px) {
+	.bottom-section .weekly {
+		width:100%;
+		display: inline-block;
+	}
+}
 
 .week-day {
 	width: 100%;
@@ -181,6 +234,13 @@ main {
 }
 .week-day > .day {
 	font-size: 1.3rem;
+}
+@media screen and (max-width : 480px) {
+	.week-day {
+		border-bottom: 1px solid var(--sub-color);
+		margin-bottom: 30px;
+		padding-bottom: 30px;
+	}
 }
 
 
