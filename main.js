@@ -38,14 +38,14 @@ let weekWeatherIcon6 = document.querySelector("#weekly-icon6");
 let dayWeather6 = document.querySelector(".week-day .day-weather6");
 
 
-// Weekly date function for bottom-section
+// Weekly date function for bottom-section -----------------------------------
 function dateBuilder(d) {
 	let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 	let day = days[d.getDay()]; // array[index]
 	return `${day}`;
 }
 
-// switch background images
+// switch background images----------------------------------------------------
 //icon list: https://openweathermap.org/weather-conditions
 function changeBg(todaysWeather) {
 	switch (todaysWeather) {
