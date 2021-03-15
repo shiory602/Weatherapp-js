@@ -288,7 +288,7 @@ let reloadDisplay = (v) => {
 		setC = setTimeout(function () {
 			getResults(v);
 			reloadDisplay(v);
-		}, 10000);
+		}, 120000);
 }
 
 
