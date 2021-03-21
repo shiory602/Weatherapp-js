@@ -131,7 +131,7 @@ function fillData(query) {
 // main fetch section
 const getResults = (city) => {
 	fetch(`${api.baseurl}weather?q=${city}&units=metric&appid=${api.key}`) // return promise
-	// units=metric&-->change k to c tem
+		// units=metric&-->change k to c tem
 		.then(response => { // response = weather data
 			// checking error and if city's name correct
 			if (response.status !== 200) {
@@ -285,10 +285,10 @@ const hourlyResults = (query) => {
 // update data every 2 mins
 let setC;
 let reloadDisplay = (v) => {
-		setC = setTimeout(function () {
-			getResults(v);
-			reloadDisplay(v);
-		}, 120000);
+	setC = setTimeout(function () {
+		getResults(v);
+		reloadDisplay(v);
+	}, 120000);
 }
 
 
