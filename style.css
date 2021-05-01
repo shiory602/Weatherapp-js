@@ -171,7 +171,7 @@ main {
 }
 @media screen and (max-width: 480px) {
 	.bottom-section {
-		height: 0;
+		height: auto;
 		display: block;
 		margin-top: 10px;
 		text-align: center;
@@ -247,3 +247,9 @@ main {
 }
 
 
+footer {
+	bottom: 0;
+	font-size: inherit;
+	text-align: center;
+	color: var(--main-color);
+}
